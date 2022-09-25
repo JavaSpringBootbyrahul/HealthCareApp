@@ -20,7 +20,7 @@
 						<th>Mobile No</th>
 						<th>Gender</th>
 						<th>Note</th>
-						<th>Image Url</th>
+						<th>Photo</th>
 						<th>Operation</th>
 					</tr>
 					<tr th:each="o:${docList}">
@@ -32,7 +32,8 @@
 						<td th:text=${o.mobileNo}></td>
 						<td th:text=${o.gender}></td>
 						<td th:text=${o.note}></td>
-						<td th:text=${o.imageUrl}></td>
+						<td><img th:src="${o.imageUrl}" width="50%" height="50%"/></td>
+						
 						<td><a th:href="@{/doctor/delete (id=${o.id})}" class="btn btn-danger">DELETE</a> |
 						 <a th:href="@{/doctor/edit (id=${o.id})}" class="btn btn-success">EDIT</a>
 						</td>

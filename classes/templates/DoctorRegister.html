@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	
-	<div th:replace="fragments/commonUI::header"></div>
-	
+
+<div th:replace="fragments/commonUI::header"></div>
+
 <body>
 	<div class="container">
 		<div class="card-header bg-primary text-white text-center">
@@ -10,97 +10,96 @@
 		</div>
 		<div class="card-body">
 			<form th:action="@{/doctor/save}" method="POST">
-			<div class="row form-group">
-				<div class="col-3">
-					<label>Enter the name:</label>
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Enter the name:</label>
+					</div>
+					<div class="col-4">
+						<input type="text" name="name" id="name" class="form-control" />
+					</div>
+					<div class="col-5"></div>
 				</div>
-				<div class="col-4">
-					<input type="text" name="name" id="name" class="form-control"/>
+				<!--row#1-->
+				<div class="row">
+					<div class="col-3">
+						<label>DOCTOR IMAGE </label>
+					</div>
+					<div class="col-4">
+						<input type="file" name="fileOb" id="fileOb"
+							onchange="uploadFile()" /> <input type="text" name="imageUrl"
+							id="imageUrl" class="form-control" readonly/>
+					</div>
 				</div>
-				<div class="col-5">
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Enter the email id:</label>
+					</div>
+					<div class="col-4">
+						<input type="text" name="emailId" class="form-control">
+					</div>
+					<div class="col-5"></div>
 				</div>
-			</div>
-			<div class="row form-group">
-				<div class="col-3">
-					<label>Enter the email id:</label>
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Enter the specialization:</label>
+					</div>
+					<div class="col-4">
+						<select name="spec.specId" id="specialization"
+							class="form-control">
+							<option value="">-SELECT-</option>
+							<option th:each="ob:${specializations}" th:value="${ob.key}"
+								th:text="${ob.value}" />
+						</select>
+					</div>
+					<div class="col-5"></div>
 				</div>
-				<div class="col-4">
-					<input type="text" name="emailId" class="form-control">
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Enter the address:</label>
+					</div>
+					<div class="col-4">
+						<textarea rows="3" cols="6" name="address" class="form-control"></textarea>
+					</div>
+					<div class="col-5"></div>
 				</div>
-				<div class="col-5">
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Enter the mobile no:</label>
+					</div>
+					<div class="col-4">
+						<input type="text" name="mobileNo" class="form-control">
+					</div>
+					<div class="col-5"></div>
 				</div>
-			</div>
-			<div class="row form-group">
-				<div class="col-3">
-					<label>Enter the specialization:</label>
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Enter the gender:</label>
+					</div>
+					<div class="col-4">
+						<input type="radio" name="gender" id="gender" value="Male">
+						Male</input> <input type="radio" name="gender" id="gender" value="Female">
+						Female</input>
+					</div>
+					<div class="col-5"></div>
 				</div>
-				<div class="col-4">
-				<select name="spec.id" id="specialization" class="form-control">
-                        	<option value="">-SELECT-</option>
-                        	<option th:each="ob:${specializations}" th:value="${ob.key}" th:text="${ob.value}"/>
-                     </select> 
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Enter the note:</label>
+					</div>
+					<div class="col-4">
+						<textarea cols="7" rows="3" name="note" class="form-control"></textarea>
+					</div>
+					<div class="col-5"></div>
 				</div>
-				<div class="col-5">
-				</div>
-			</div>
-			<div class="row form-group">
-				<div class="col-3">
-					<label>Enter the address:</label>
-				</div>
-				<div class="col-4">
-					<textarea rows="3" cols="6" name="address" class="form-control"></textarea>
-				</div>
-				<div class="col-5">
-				</div>
-			</div>
-			<div class="row form-group">
-				<div class="col-3">
-					<label>Enter the mobile no:</label>
-				</div>
-				<div class="col-4">
-					<input type="text" name="mobileNo" class="form-control">
-				</div>
-				<div class="col-5">
-				</div>
-			</div>
-			<div class="row form-group">
-				<div class="col-3">
-					<label>Enter the gender:</label>
-				</div>
-				<div class="col-4">
-					<input type="radio" name="gender" id="gender" value="Male"> Male</input>
-					<input type="radio" name="gender" id="gender" value="Female"> Female</input>
-				</div>
-				<div class="col-5">
-				</div>
-			</div>
-			<div class="row form-group">
-				<div class="col-3">
-					<label>Enter the note:</label>
-				</div>
-				<div class="col-4">
-					<textarea cols="7" rows="3" name="note" class="form-control"></textarea>
-				</div>
-				<div class="col-5">
-				</div>
-			</div>
-			<div class="row form-group">
-				<div class="col-3">
-					<label>Enter the photo:</label>
-				</div>
-				<div class="col-4">
-					 <input type="text" name="imageUrl" id="imageUrl" class="form-control"> 
-				</div>
-				<div class="col-5">
-				</div>
-			</div>
-			<input type="submit" value="Register" class="btn btn-success">
-		</form>
-			
+
+				<input type="submit" value="Register" class="btn btn-success">
+			</form>
+
 		</div>
 		<div class="card-footer" th:if="${message!=null}">
-			[[${message}]]
-		</div>
+			[[${message}]]</div>
 	</div>
+	
+	<script th:src="@{/myjs/uploadImgBb.js}"></script>
 </body>
 </html>
