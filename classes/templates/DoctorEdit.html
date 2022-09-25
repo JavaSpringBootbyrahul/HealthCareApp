@@ -16,9 +16,18 @@
 							<label>Doctor id:</label>
 						</div>
 						<div class="col-4">
-							<input type="text" th:field="${doctor.id}" class="form-control"/>
+							<input type="text" th:field="*{id}" class="form-control" readonly="readonly"/>
 						</div>
 						<div class="col-5">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label>Doctor Image:</label>
+						</div>
+						<div class="col-4">
+							<input type="file" name="fileOb" id="fileOb" class="form-control" onchange="uploadFile()"/>
+							<input type="text" th:field="*{imageUrl}" id="imageUrl" class="form-control" readonly/>
 						</div>
 					</div>
 					<div class="row">
@@ -26,7 +35,7 @@
 							<label>Enter the name:</label>
 						</div>
 						<div class="col-4">
-							<input type="text" th:field="${doctor.name}" class="form-control"/>
+							<input type="text" th:field="*{name}" class="form-control"/>
 						</div>
 						<div class="col-5">
 						</div>
@@ -36,7 +45,7 @@
 							<label>Enter the emailId:</label>
 						</div>
 						<div class="col-4">
-							<input type="text" th:field="${doctor.emailId}" class="form-control"/>
+							<input type="text" th:field="*{emailId}" class="form-control"/>
 						</div>
 						<div class="col-5">
 						</div>
@@ -46,7 +55,7 @@
 							<label>Enter the address:</label>
 						</div>
 						<div class="col-4">
-							<textarea rows="3" cols="4" th:field="${doctor.address}" class="form-control"></textarea>
+							<textarea rows="3" cols="4" th:field="*{address}" class="form-control"></textarea>
 						</div>
 						<div class="col-5">
 						</div>
@@ -56,7 +65,7 @@
 							<label>Enter the mobile no:</label>
 						</div>
 						<div class="col-4">
-							<input type="text" th:field="${doctor.mobileNo}" class="form-control"/>
+							<input type="text" th:field="*{mobileNo}" class="form-control"/>
 						</div>
 						<div class="col-5">
 						</div>
@@ -66,7 +75,7 @@
 							<label>Enter the gender:</label>
 						</div>
 						<div class="col-4">
-							<input type="text" th:field="${doctor.gender}" class="form-control"/>
+							<input type="text" th:field="*{gender}" class="form-control"/>
 						</div>
 						<div class="col-5">
 						</div>
@@ -76,7 +85,7 @@
 							<label>Enter the note:</label>
 						</div>
 						<div class="col-4">
-							<textarea rows="3" cols="6" th:field="${doctor.note}" class="form-control"></textarea>
+							<textarea rows="3" cols="6" th:field="*{note}" class="form-control"></textarea>
 						</div>
 						<div class="col-5">
 						</div>
@@ -86,7 +95,7 @@
 							<label>Enter  the image url:</label>
 						</div>
 						<div class="col-4">
-							<input type="text" th:field="${doctor.imageUrl}" class="form-control"/>
+							<input type="text" th:field="*{imageUrl}" class="form-control"/>
 						</div>
 						<div class="col-5">
 						</div>
@@ -98,5 +107,6 @@
 			</div>
 		</div>
 	</div>
+	<script th:src="@{/myjs/uploadImgBb.js}" ></script>
 </body>
 </html>
