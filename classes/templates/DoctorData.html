@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<div th:replace="fragments/commonUI::header"></div>
+
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h2>Doctors Data</h2>
+			</div>
+			<div class="card-body">
+				<table class="table table-hover">
+					<tr class="bg-warning">
+						<th>Id</th>
+						<th>Name</th>
+						<th>Email Id</th>
+<!-- 						<th>Specification</th>
+ -->					<th>Address</th>
+						<th>Mobile No</th>
+						<th>Gender</th>
+						<th>Note</th>
+						<th>Image Url</th>
+						<th>Operation</th>
+					</tr>
+					<tr th:each="o:${docList}">
+						<td th:text=${o.id}></td>
+						<td th:text=${o.name}></td>
+						<td th:text=${o.emailId}></td>
+<!-- 						<td th:text=${o.spec.specName}></td>
+ -->						<td th:text=${o.address}></td>
+						<td th:text=${o.mobileNo}></td>
+						<td th:text=${o.gender}></td>
+						<td th:text=${o.note}></td>
+						<td th:text=${o.imageUrl}></td>
+						<td><a th:href="@{/doctor/delete (id=${o.id})}" class="btn btn-danger">DELETE</a> |
+						 <a th:href="@{/doctor/edit (id=${o.id})}" class="btn btn-success">EDIT</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="card-footer bg-primary text-white" th:if="${message}">
+				<b>[[${message}]]</b>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

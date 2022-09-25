@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<div th:replace="fragments/commonUI::header"></div>
+	
+<body>
+	<div class="container">
+		<div class="card-header bg-primary text-white text-center">
+			<h2>Specialization Data</h2>
+		</div>
+		<div class="card-body" >
+			<a th:href="@{/spec/excel}" class="btn btn-warning"><b>Excel View</b></a>
+			<table class="table table-hover">
+                    <tr class="bg-info text-white">
+                        <th>ID</th>
+                        <th>CODE</th>
+                        <th>NAME</th>
+                        <th>NOTE</th>
+                        <th>OPERATION</th>
+                    </tr>
+                    <tr th:each="ob:${specList}">
+                    	<td th:text="${ob.specId}"></td>
+                    	<td th:text="${ob.specCode}"></td>
+                    	<td th:text="${ob.specName}"></td>
+                    	<td th:text="${ob.specNote}"></td>
+                    	<td>
+                    		<a th:href="@{/spec/delete(id=${ob.specId})}" class="btn btn-danger">DELETE <i class="fa fa-trash-o" aria-hidden="true"></i> </a> | 
+                    		<a th:href="@{/spec/edit(id=${ob.specId})}" class="btn btn-warning">EDIT <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    	</td>
+                    </tr>
+                </table>
+		</div>
+		<div class="card-footer bg-primary text-white">
+			<h5>[[${message}]]</h5>
+		</div>
+	</div>
+</body>
+</html>

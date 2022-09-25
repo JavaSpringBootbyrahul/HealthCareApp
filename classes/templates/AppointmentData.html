@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="fragments/commonUI::header"></div>
+
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h2>Appointment Data</h2>
+			</div>
+			<div class="card-body">
+				<table class="table table-hover">
+					<tr class="bg-warning">
+						<th>Id</th>
+	<!-- 					<th>Doctor</th> -->
+						<th>AppointDate</th>
+						<th>AppintDetails</th>
+						<th>AppointConsFee</th>
+						<th>Operation</th>
+					</tr>
+					<tr th:each="app:${appList}">
+							<td>[[${app.id}]]</td>
+							<!-- <td></td> -->
+							<td>[[${app.appointDate}]]</td>
+							<td>[[${app.appointDetails}]]</td>
+							<td>[[${app.appointConsFee}]]</td>
+							<td>
+								<a class="btn btn-success" th:href="@{/appoint/edit(id=${app.id})}">EDIT</a> |
+								 <a class="btn btn-danger" th:href="@{/appoint/delete(id=${app.id})}">DELETE</a>
+							</td>
+					</tr>
+				</table>
+			</div>
+			<div class="card-footer text-white bg-primary" th:if="${message}">
+				<b>[[${message}]]</b>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

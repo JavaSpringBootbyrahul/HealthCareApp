@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<div th:replace="fragments/commonUI::header"></div>
+
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h2>Patient Register</h2>
+			</div>
+			<div class="card-body">
+				<form th:action="@{/patient/save}" method="POST">
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Enter the first name:</label>
+						</div>
+						<div class="col-4">
+							<input type="text" name="firstName" class="form-control">
+						</div>
+						<div class="col-5" id="firstNameError">
+							
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Enter the last name:</label>
+						</div>
+						<div class="col-4">
+							<input type="text" name="lastName" class="form-control">
+						</div>
+						<div class="col-5" id="lastNameError">
+							
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Enter the gender:</label>
+						</div>
+						<div class="col-4">
+							<input type="radio" name="gender" value="Male"> Male</input> 
+							<input type="radio" name="gender" value="Female"> Female</input> 
+						</div>
+						<div class="col-5" id="genderError">
+							
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Enter the phone no:</label>
+						</div>
+						<div class="col-4">
+							<input type="text" name="phoneNo" id="phoneNo" class="form-control"/> 
+						</div>
+						<div class="col-5" id="phoneNoError">
+							
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Enter the dob:</label>
+						</div>
+						<div class="col-4">
+							<input type="date" name="dob" id="dob"  class="form-control"/> 
+						</div>
+						<div class="col-5" id="dobError">
+							
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Enter the marrital status:</label>
+						</div>
+						<div class="col-4">
+							<input type="radio"  name="marriStatus" value="Married"> Married</input>
+							<input type="radio" name="marriStatus" value="Unmarried"> Unmarried</input> 
+							<input type="radio" name="marriStatus" value="Divorced"> Divorced</input>
+						</div>
+						<div class="col-5" id="marriStatusError">
+							
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Enter the present Address:</label>
+						</div>
+						<div class="col-4">
+							<textarea cols="7" rows="3" name="preAdd" class="form-control"></textarea>
+						</div>
+						<div class="col-5" id="preAddError">
+							
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Enter the communication Address:</label>
+						</div>
+						<div class="col-4">
+							<textarea cols="5" rows="3" name="commAdd" class="form-control"></textarea>
+						</div>
+						<div class="col-5" id="commAddError">
+							
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Past Medical History:</label>
+						</div>
+						<div class="col-4">
+							<input type="checkbox" name="medHistory" value="Anemia"> Anemia</input> 
+							<input type="checkbox" name="medHistory" value="Asthama"> Asthama</input> 
+							<input type="checkbox" name="medHistory" value="Diabetes"> Diabetes</input> <br>
+							<input type="checkbox" name="medHistory" value="Cancer"> Cancer</input>  	
+							<input type="checkbox" name="medHistory" value="Ulcer"> Ulcer</input>  
+							<input type="checkbox" name="medHistory" value="Chickenpox"> Chickenpox</input><br>
+							<label for="otherMediHistory">
+								<input type="checkbox" id="other" value="other" name="medHistory"> other</input> 
+							</label>
+							<input type="text" name="otherMediHistory"  class="form-control"/>
+						</div>
+						<div class="col-5" id="commAddError">
+							
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Other Details:</label>
+						</div>
+						<div class="col-4">
+							<textarea cols="5" rows="3" name="otherDetails" class="form-control"></textarea>
+						</div>
+						<div class="col-5" id="otherDetailsError">
+							
+						</div>
+					</div>
+					<button type="submit" class="btn btn-success">Register</button>
+				</form>
+			</div>
+			<div class="card-footer bg-primary text-white" th:if="${message}">
+				<b>[[${message}]]</b>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

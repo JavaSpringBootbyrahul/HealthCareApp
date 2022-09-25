@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<div th:replace="fragments/commonUI::header"></div>
+
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h2>Doctor Edit Page</h2>
+			</div>
+			<div class="card-body ">
+				<form th:action="@{/doctor/update}" method="post" th:Object="${doctor}">
+					<div class="row">
+						<div class="col-3">
+							<label>Doctor id:</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="${doctor.id}" class="form-control"/>
+						</div>
+						<div class="col-5">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label>Enter the name:</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="${doctor.name}" class="form-control"/>
+						</div>
+						<div class="col-5">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label>Enter the emailId:</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="${doctor.emailId}" class="form-control"/>
+						</div>
+						<div class="col-5">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label>Enter the address:</label>
+						</div>
+						<div class="col-4">
+							<textarea rows="3" cols="4" th:field="${doctor.address}" class="form-control"></textarea>
+						</div>
+						<div class="col-5">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label>Enter the mobile no:</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="${doctor.mobileNo}" class="form-control"/>
+						</div>
+						<div class="col-5">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label>Enter the gender:</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="${doctor.gender}" class="form-control"/>
+						</div>
+						<div class="col-5">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label>Enter the note:</label>
+						</div>
+						<div class="col-4">
+							<textarea rows="3" cols="6" th:field="${doctor.note}" class="form-control"></textarea>
+						</div>
+						<div class="col-5">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label>Enter  the image url:</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="${doctor.imageUrl}" class="form-control"/>
+						</div>
+						<div class="col-5">
+						</div>
+					</div>
+					<input type="submit" class="btn btn-success" value="update">
+				</form>
+			</div>
+			<div class="card-footer bg-primary">
+			</div>
+		</div>
+	</div>
+</body>
+</html>

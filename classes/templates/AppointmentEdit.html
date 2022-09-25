@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="fragments/commonUI::header"></div>
+
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h2>Appointment Edit Page</h2>
+			</div>
+			<div class="card-body">
+				<form th:action="@{/appoint/update}" method="POST" th:object="${appoint}">
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Appointment Id:</label>
+					</div>
+					<div class="col-4">
+						<input type="text" th:field="*{id}" class="form-control" readonly="readonly">
+					</div>
+					<div class="col-5">
+						<span id=""></span>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Select the doctor:</label>
+					</div>
+					<div class="col-4">
+ 						<select name="doctor.id"  class="form-control">
+							<option>--SELECT DOCTOR--</option>
+							<option 
+								th:each="ob:${doctors}" 
+								th:text="${ob.value}"
+								th:value="${ob.key}" 
+							/> 
+						</select>
+ -					</div>
+					<div class="col-5">
+						<span id=""></span>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Select the date:</label>
+					</div>
+					<div class="col-4">
+						<input type="text" th:field="*{appointDate}" class="form-control"/>
+					</div>
+					<div class="col-5">
+						<span id="appointDateError"></span>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Number Of Slots:</label>
+					</div>
+					<div class="col-4">
+						<input type="text" th:field="*{noOfSlots}" class="form-control"/>
+					</div>
+					<div class="col-5">
+						<span id="noOfSlotsError"></span>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Enter the Appointment Details:</label>
+					</div>
+					<div class="col-4">
+						<textarea rows="3" cols="6" th:field="*{appointDetails}" class="form-control"></textarea>
+					</div>
+					<div class="col-5">
+						<span id="appointDetailsError"></span>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Enter the Consultation Fee:</label>
+					</div>
+					<div class="col-4">
+						<input type="text" th:field="*{appointConsFee}" class="form-control"/>
+					</div>
+					<div class="col-5">
+						<span id="appointConsFeeError"></span>
+					</div>
+					<button class="btn btn-success">Register</button>
+				</div>
+				</form>
+			</div>
+			<div class="card-footer bg-primary text-white" th:if="${message}">
+				<b>[[${message}]]</b>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
