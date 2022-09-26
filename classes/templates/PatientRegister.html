@@ -3,6 +3,7 @@
 	
 	<div th:replace="fragments/commonUI::header"></div>
 
+	<div th:replace="fragments/commonUser::usermenu"></div>
 <body>
 	<div class="container">
 		<div class="card">
@@ -50,7 +51,7 @@
 							<label>Enter the phone no:</label>
 						</div>
 						<div class="col-4">
-							<input type="text" name="phoneNo" id="phoneNo" class="form-control"/> 
+							<input type="number" name="phoneNo" id="phoneNo" class="form-control"/> 
 						</div>
 						<div class="col-5" id="phoneNoError">
 							

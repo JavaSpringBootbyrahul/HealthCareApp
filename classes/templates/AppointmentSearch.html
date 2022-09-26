@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<div th:replace="fragments/commonUI::header"></div>
+	
+	<div th:replace="fragments/commonUser::usermenu"></div>
+	
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h2>Doctors Data</h2>
+			</div>
+			<div class="card-body">
+				<form th:action="@{/appoint/view}">
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Specializations:</label>
+						</div>
+						<div class="col-4">
+							<select name="specId" class="form-control">
+								<option value="0">--View All Doctors--</option>
+								<option 
+									th:each="o:${specializations}"
+									th:text="${o.value}" 
+									th:value="${o.key}"
+								/>
+							</select>
+							
+							<button type="submit" class="btn btn-success">search</button>
+						</div>
+					</div>
+				</form>
+				<div th:if="${message!=null}" class="text-success bg-light">
+					<h5>[[${message}]]</h5>
+				</div>
+				<div>
+					<table class="table table-hover">
+						<tr class="bg-warning">
+							<th>#</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Specialization</th>
+							<th>Mobile No</th>
+							<th>Note</th>
+							<th>Operation</th>
+						</tr>
+						<tr th:each="ob:${docList}">
+							<td><img th:src="${ob.imageUrl}" width="10%" height="10%" /></td>
+							<td th:text="${ob.name}"></td>
+							<td th:text="${ob.emailId}"></td>
+							<td th:text="${ob.spec.specName}"></td>
+							<td th:text="${ob.mobileNo}"></td>
+							<td th:text="${ob.note}"></td>
+							<td><a th:href="@{/viewSlots}" class="btn btn-info">view Slots</a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			</div>
+
+			<div class="card-footer">
+				
+			</div>
+		</div>
+</html>

@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 	<div th:replace="fragments/commonUI::header"></div>
+	
+	<div th:replace="fragments/commonUser::usermenu"></div>
 <body>
 	<div class="container">
 		<div class="card">
@@ -15,11 +17,11 @@
 						<label>Select the doctor:</label>
 					</div>
 					<div class="col-4">
-						<select name="doctor.id"class="form-control">
+						<select name="doctor.id" class="form-control">
 							<option>--SELECT Doctor--</option>
 							<option th:each="ob:${doctors}"
-								th:text="${ob.value}"
 								th:value="${ob.key}"
+								th:text="${ob.value}"
 							/> 
 						</select>
  					</div>
@@ -32,7 +34,7 @@
 						<label>Select the date:</label>
 					</div>
 					<div class="col-4">
-						<input type="text" name="appointDate" class="form-control"/>
+						<input type="date" name="appointDate" class="form-control"/>
 					</div>
 					<div class="col-5">
 						<span id="appointDateError"></span>
@@ -65,7 +67,7 @@
 						<label>Enter the Consultation Fee:</label>
 					</div>
 					<div class="col-4">
-						<input type="text" name="appointConsFee" class="form-control"/>
+						<input type="number" name="appointConsFee" class="form-control"/>
 					</div>
 					<div class="col-5">
 						<span id="appointConsFeeError"></span>

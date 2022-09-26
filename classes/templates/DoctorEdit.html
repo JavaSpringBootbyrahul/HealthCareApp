@@ -3,6 +3,7 @@
 	
 	<div th:replace="fragments/commonUI::header"></div>
 
+	<div th:replace="fragments/commonUser::usermenu"></div>
 <body>
 	<div class="container">
 		<div class="card">
@@ -40,6 +41,21 @@
 						<div class="col-5">
 						</div>
 					</div>
+					<div class="row form-group">
+						<div class="col-3">
+							<label>Select Specialization:</label>
+						</div>
+						<div class="col-4">
+							<select name="spec.specId" id="specialization" class="form-control" >
+								<option>--SELECT SPECIALIZATION--</option>
+								<option	
+									th:each="ob:${specializations}"
+									th:text="${ob.value}"
+									th:value="${ob.key}"
+								/>
+							</select>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col-3">
 							<label>Enter the emailId:</label>
@@ -75,7 +91,8 @@
 							<label>Enter the gender:</label>
 						</div>
 						<div class="col-4">
-							<input type="text" th:field="*{gender}" class="form-control"/>
+							<input type="radio" th:field="*{gender}" id="gender" value="Male"> Male 
+							<input type="radio" th:field="*{gender}" id="gender" value="Female"> Female
 						</div>
 						<div class="col-5">
 						</div>
@@ -86,16 +103,6 @@
 						</div>
 						<div class="col-4">
 							<textarea rows="3" cols="6" th:field="*{note}" class="form-control"></textarea>
-						</div>
-						<div class="col-5">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-3">
-							<label>Enter  the image url:</label>
-						</div>
-						<div class="col-4">
-							<input type="text" th:field="*{imageUrl}" class="form-control"/>
 						</div>
 						<div class="col-5">
 						</div>

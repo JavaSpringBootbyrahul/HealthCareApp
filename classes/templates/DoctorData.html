@@ -3,6 +3,7 @@
 
 	<div th:replace="fragments/commonUI::header"></div>
 
+	<div th:replace="fragments/commonUser::usermenu"></div>
 <body>
 	<div class="container">
 		<div class="card">
@@ -10,10 +11,12 @@
 				<h2>Doctors Data</h2>
 			</div>
 			<div class="card-body">
+				<a th:href="@{/doctor/excel}" class="btn btn-success">Doctor Data</a>
 				<table class="table table-hover">
 					<tr class="bg-warning">
 						<th>Id</th>
 						<th>Name</th>
+						<th>Specialization</th>
 						<th>Email Id</th>
 <!-- 						<th>Specification</th>
  -->					<th>Address</th>
@@ -26,9 +29,10 @@
 					<tr th:each="o:${docList}">
 						<td th:text=${o.id}></td>
 						<td th:text=${o.name}></td>
+						<td th:text=${o.spec.specName}></td>
 						<td th:text=${o.emailId}></td>
-<!-- 						<td th:text=${o.spec.specName}></td>
- -->						<td th:text=${o.address}></td>
+					
+						<td th:text=${o.address}></td>
 						<td th:text=${o.mobileNo}></td>
 						<td th:text=${o.gender}></td>
 						<td th:text=${o.note}></td>
